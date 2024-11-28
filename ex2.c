@@ -1,58 +1,225 @@
-/******************
-Name:
-ID:
-Assignment: ex2
-*******************/
-
 #include <stdio.h>
 
 int main() {
-	// Case 1: Draw Happy Face with given symbols for eyes, nose and mouse
-	/* Example:
-	* n = 3:
-	* 0   0
-	*   o
-	* \___/
-	*/
-    
+    int num;
+	char c;
+	while(1) {
+    printf("Choose an option:\n");
+	printf("	1. Happy Face\n");
+	printf("	2. Balanced Number\n");
+	printf("	3. Generous Number\n");
+	printf("	4. Circle Of Joy\n");
+	printf("	5. Happy Numbers\n");
+	printf("	6. Festival Of Laughter\n");
+	printf("	7. Exit\n");
+	scanf("%d", &num);
+	
+	//ex1
+	   if(num==1){
+	    char e, n, m;
+		int i;
+        printf("Enter symbols for the eyes, nose, and mouth:\n");
+        scanf(" %c %c %c", &e, &n, &m);
+		printf("Enter face size:\n");
+		scanf(" %d",&i);
+		while(i<=0||i%2==0){
+			printf("The face's size must be an odd and positive number, please try again:\n");
+			scanf(" %d", &i);
+			scanf("%*[^\n]%*c");
+		}
+		printf("%c", e);
+		for(int j=0;j<i;j++){
+			printf(" ");
+		}
+		printf("%c", e);
+		printf("\n", i);
+	
+	    int z;
+	    z=(i + 1) / 2;
 
-	// Case 2: determine whether the sum of all digits to the left of the middle digit(s)
-	// and the sum of all digits to the right of the middle digit(s) are equal
-	/* Examples:
-	Balanced: 1533, 450810, 99
-	Not blanced: 1552, 34
-	Please notice: the number has to be bigger than 0.
-	*/
+	    for(int y = 0; y < z; y++){
+		  printf(" ");
+	    }
+    	printf("%c", n);
+	    for(int y = 0; y < z; y++){
+	      printf(" ");
+    	}
+    	printf("\n", z);
+	    printf("\\");
+	    for(int f=0 ;f<i ;f++){
+	    	printf("%c", m);
+	    }
+	    printf("/\n", i);
+	    }
+	    
+	    //ex2
+        else if(num==2){
+	    int n, n1, i, d, side1=0, side2=0;
+	    int lg=0;
+	    printf("Enter a number:\n");
+	    scanf(" %d", &n);
+	    while(n<1){
+	        printf("Only positive number is allowed, please try again:\n");
+	        scanf(" %d", &n);
+	    }
+	    d=n;
+	    n1=n;
+	    while(d>0){
+	            d=d/10;
+	            lg++;
+	        }
+	    if((lg%2)==1){
+	        lg=lg/2;
+	        for(i=0;i<lg;i++){
+	            side1=side1+(n%10);
+	            n1=(n/10);
+	        }
+	        n1=n1/10;
+	        for(i=0;i<lg;i++){
+	            side2=side2+(n1%10);
+	            n1=n1/10;
+	        }
+	        }else if(num==3){
+	        lg=lg/2;
+	        for(i=0;i<lg;i++){
+	            side1=side1+(n1%10);
+	            n1=n1/10;
+	        }
+	        for(i=0;i<lg;i++){
+	            side2=side2+(n1%10);
+	            n1=n1/10;
+	        }
+	        }
+	        if(side1==side2)
+	          printf("This number is balanced and brings harmony!\n");
+	        else
+	          printf("This number isn't balanced and destroys harmony.\n");
+	     
+	     //ex3
+	   }else if (num==3){
+	     int w, z;
+	     printf("Enter a number:\n");
+	     scanf(" %d", &w);
+	     while(w<=0){
+	         printf("Only positive number is allowed, please try again:\n");
+	         scanf(" %d", &w);
+	     }
+	     int sumd=0;
+	     for(int i=w; i>1; i--){
+	         z=w/i;
+	         if(w%z==0)
+	            sumd=sumd+z;
+	     }
+	     if(sumd>w)
+	       printf("This number is generous!\n");
+	     else
+	       printf("This number does not share.\n");
+	}
+	//ex4
+	else if(num==4){
+	    int w, count=0;
+	    printf("Enter a number:\n");
+	    scanf("%d", &w);
+	    while(w<1){
+	        printf("Only positive number is allowed, please try again:\n");
+	        scanf("%d", &w);
+	    }
+	   for(int i=w-1; i>1; i--){
+	       if(w%i==0)
+	       count++;
+	   }
+	    
+	   if(count==0&&w!=1)
+	     printf("This number completes the circle of joy!\n");
+	   else
+	     printf("The circle remains incomplete.\n");
+	    
+	    //ex5
+	}else if(num==5){
+	    int n, number=0, digit, sum;
+	    
+	    printf("Enter a number:\n");
+	    scanf("%d", &n);
+	    while(n<1){
+	      printf("Only positive number is allowed, please try again:\n");
+	      scanf("%d", &n);
+	    }
+	    printf("Between 1 and %d only these numbers bring happiness: 1", n);
+        for(int i=1; i<=n; i++){
+         number=i;    
+         while (number != 1 && number != 4) {
+          sum = 0;
+          while (number > 0) {
+            digit = number % 10;         
+            sum += digit * digit;       
+            number /= 10;                
+          }
 
-	// Case 3: determine whether the sum of the proper divisors (od an integer) is greater than the number itself
-	/* Examples:
-	Abudant: 12, 20, 24
-	Not Abudant: 3, 7, 10
-	Please notice: the number has to be bigger than 0.
-	*/
+         number = sum;
+        }
+          if(sum==1){
+          printf(" %d", i);
+         }
+	    }
+	    printf("\n");
+	    }
+	    
+	    
+	    //ex6
+    else if(num==6){
+      int smileNumber, cheerNumber, n = 0;
 
-	// Case 4: determine wether a number is a prime.
-	/* Examples:
-	This one brings joy: 3, 5, 11
-	This one does not bring joy: 15, 8, 99
-	Please notice: the number has to be bigger than 0.
-	*/
-    
+      printf("Enter a smile and cheer number:\n");
 
-	// Happy numbers: Print all the happy numbers between 1 to the given number.
-	// Happy number is a number which eventually reaches 1 when replaced by the sum of the square of each digit
-	/* Examples:
-	Happy :) : 7, 10
-	Not Happy :( : 5, 9
-	Please notice: the number has to be bigger than 0.
-	*/
+      while (1) {
+        
 
-	// Festival of Laughter: Prints all the numbers between 1 the given number:
-	// and replace with "Smile!" every number that divided by the given smile number
-	// and replace with "Cheer!" every number that divided by the given cheer number
-	// and replace with "Festival!" every number that divided by both of them
-	/* Example:
-	6, smile: 2, cheer: 3 : 1, Smile!, Cheer!, Smile!, 5, Festival!
-	*/
-	return 0;
+        if (scanf(" smile: %d , cheer: %d", &smileNumber, &cheerNumber) == 2 &&
+            smileNumber > 0 && cheerNumber > 0 && smileNumber != cheerNumber) {
+            break;
+        }
+
+        printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:\n");
+        scanf("%*[^\n]");
+        scanf("%*c");
+    }
+
+    while (1) {
+        printf("Enter maximum number for the festival:\n");
+
+        if (scanf("%d", &n) == 1 && n > 0) {
+            break;
+        }
+
+        printf("Only positive maximum number is allowed, please try again:\n");
+        scanf("%*[^\n]");
+        scanf("%*c");
+    }
+
+    for (int i = 1; i <= n; i++) {
+        if (i % smileNumber == 0 && i % cheerNumber == 0) {
+            printf("Festival!\n");
+        } else if (i % smileNumber == 0) {
+            printf("Smile!\n");
+        } else if (i % cheerNumber == 0) {
+            printf("Cheer!\n");
+        } else {
+            printf("%d\n", i);
+        }
+    }
+
+   
+    }
+	
+	//ex7
+	else if(num==7){
+		
+	    printf("Thank you for your journey through Numeria!!");
+	    break;
+		
+	} 
+
+}
+return 0;
+
 }
